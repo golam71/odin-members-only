@@ -1,0 +1,37 @@
+{
+  "name": "odin-members-only",
+  "version": "1.0.0",
+  "description": "A expressjs project with authentication demo using passpotjs",
+  "keywords": [
+    "node",
+    "express",
+    "passport"
+  ],
+  "homepage": "https://github.com/golam71/odin-members-only#readme",
+  "bugs": {
+    "url": "https://github.com/golam71/odin-members-only/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/golam71/odin-members-only.git"
+  },
+  "license": "MIT",
+  "author": "golam71",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "install": "npm install express express-session pg passport passport-local ejs bcryptjs",
+    "start": "node src/index.js",
+    "dev": "node --watch src/**.js src/index.js ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "ejs": "^7.0.1",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.23.1"
+  }
+}
