@@ -6,8 +6,12 @@
     <title>Memebers Club</title>
   </head>
   <body>
-    <a href="/login">login</a>
-    <br />
+
+  <% if (!user) { %>
+    <a href="/login">login</a><br />
     <a href="/signup">signup</a>
+  <% } else { %>
+    Hello <%= user.email %>
+  <% } %>
   </body>
 </html>

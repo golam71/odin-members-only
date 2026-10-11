@@ -2,9 +2,10 @@ import { Router } from "express";
 import session from "express-session";
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
+import pgSession from "connect-pg-simple";
 import pool from "../model/db.js";
 import { authenticateUser } from "../model/loginModel.js";
-import "node:process";
+import process from "node:process";
 
 try {
   process.loadEnvFile();
@@ -13,12 +14,22 @@ try {
 }
 
 const authRouter = Router();
+const PgSessionStore = pgSession(session);
 
 authRouter.use(
   session({
+    store: new PgSessionStore({
+      pool: pool,
+      tableName: "user_sessions",
+    }),
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+      httpOnly: true,
+      sameSite: "lax",
+    },
   }),
 );
 
