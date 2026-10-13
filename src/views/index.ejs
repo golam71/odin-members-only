@@ -3,15 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Memebers Club</title>
+    <title>Members Club</title>
   </head>
   <body>
+    <%- include('partials/nav') %>
 
-  <% if (!user) { %>
-    <a href="/login">login</a><br />
-    <a href="/signup">signup</a>
-  <% } else { %>
-    Hello <%= user.email %>
-  <% } %>
+    <% if (user) { %>
+      <p>Hello <%= user.full_name %></p>
+    <% } %>
+
+    <h1>Club Messages</h1>
+
+    <% if (typeof messages !== 'undefined' && messages.length) { %>
+      <% messages.forEach((m) => { %>
+        <div>
+          <h3><%= m.title %></h3>
+          <p><%= m.text %></p>
+          <% if (user && user.is_member) { %>
+            <p>By <%= m.author %> on <%= m.created_at %></p>
+          <% } %>
+          <% if (user && user.is_admin) { %>
+            <form action="/deleteMessage" method="POST">
+              <input type="hidden" name="message_id" value="<%= m.id %>" />
+              <button type="submit">Delete</button>
+            </form>
+          <% } %>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p>No messages yet.</p>
+    <% } %>
+
+    <%- include('partials/footer') %>
   </body>
 </html>

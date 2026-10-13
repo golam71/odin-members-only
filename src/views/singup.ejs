@@ -1,3 +1,8 @@
+<%- include('partials/nav') %>
+<h1>Sign Up</h1>
+<% if (typeof error !== 'undefined' && error) { %>
+  <div><p><%= error %></p></div>
+<% } %>
 <form action="/signup" method="POST">
   <div>
     <label for="fullname">Full Name:</label>
@@ -7,6 +12,7 @@
       name="fullname"
       placeholder="John Doe"
       required
+      value="<%= typeof fullname !== 'undefined' ? fullname : '' %>"
     />
   </div>
 
@@ -18,6 +24,7 @@
       name="email"
       placeholder="name@example.com"
       required
+      value="<%= typeof email !== 'undefined' ? email : '' %>"
     />
   </div>
 
@@ -47,3 +54,4 @@
 
   <button type="submit">Create Account</button>
 </form>
+<%- include('partials/footer') %>

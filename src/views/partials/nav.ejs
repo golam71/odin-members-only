@@ -1,0 +1,21 @@
+<%- include('styles') %>
+
+<nav>
+  <% if (locals.user) { %>
+    <a href="/">Home</a>
+    <a href="/message">New Message</a>
+    <% if (!locals.user.is_member) { %>
+      <a href="/member">Join Club</a>
+    <% } %>
+    <% if (!locals.user.is_admin) { %>
+      <a href="/admin">Become Admin</a>
+    <% } %>
+    <form action="/logout" method="POST">
+      <button type="submit">Logout</button>
+    </form>
+  <% } else { %>
+    <a href="/">Home</a>
+    <a href="/login">Login</a>
+    <a href="/signup">Signup</a>
+  <% } %>
+</nav>

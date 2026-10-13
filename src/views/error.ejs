@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <%- include('partials/nav') %>
+
+    <main>
+      <h1><%= title %></h1>
+      <p><%= message %></p>
+      <div>
+        <a href="<%= back %>">&larr; Go back</a>
+        <a href="/">Go home</a>
+      </div>
+    </main>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>

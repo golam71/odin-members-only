@@ -6,7 +6,7 @@ import mainRouter from "./routes/mainRouter.js";
 
 app.set("view engine", "ejs");
 app.set("views", path.join(import.meta.dirname, "views"));
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: false }));
 
 app.use(mainRouter);
 
