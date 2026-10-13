@@ -1,20 +1,29 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="/favicon.svg">
+  <title>Members Club</title>
+</head>
 <%- include('styles') %>
 
 <nav>
   <% if (locals.user) { %>
-    <a href="/">Home</a>
-    <a href="/message">New Message</a>
+    <a href="/" class="home" aria-label="Home">
+      Home
+    </a>
+    <a href="/message">Message</a>
     <% if (!locals.user.is_member) { %>
-      <a href="/member">Join Club</a>
+      <a href="/member">Member</a>
     <% } %>
-    <% if (!locals.user.is_admin) { %>
-      <a href="/admin">Become Admin</a>
+    <% if (!locals.user.is_admin && locals.user.is_member) { %>
+      <a href="/admin">Admin</a>
     <% } %>
     <form action="/logout" method="POST">
       <button type="submit">Logout</button>
     </form>
   <% } else { %>
-    <a href="/">Home</a>
+    <a href="/" class="home" aria-label="Home">
+    Home
+    </a>
     <a href="/login">Login</a>
     <a href="/signup">Signup</a>
   <% } %>

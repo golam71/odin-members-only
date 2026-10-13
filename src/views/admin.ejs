@@ -1,14 +1,12 @@
 <%- include('partials/nav') %>
-<h1>Become an Admin</h1>
 <% if (typeof errors !== 'undefined' && errors.length) { %>
-  <div>
+  <div class="errors">
     <% errors.forEach((e) => { %><p><%= e %></p><% }) %>
   </div>
 <% } %>
-<form action="/admin" method="POST">
-  <h2>Enter Admin password:</h2>
+<form class="main form" action="/admin" method="POST">
   <div>
-    <label for="password">Password:</label>
+    <label for="password">Enter Admin password:</label>
     <input
       type="password"
       id="password"

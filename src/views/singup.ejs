@@ -1,9 +1,9 @@
 <%- include('partials/nav') %>
 <h1>Sign Up</h1>
 <% if (typeof error !== 'undefined' && error) { %>
-  <div><p><%= error %></p></div>
+  <div class="errors"><p><%= error %></p></div>
 <% } %>
-<form action="/signup" method="POST">
+<form class="main form" action="/signup" method="POST">
   <div>
     <label for="fullname">Full Name:</label>
     <input
@@ -12,6 +12,7 @@
       name="fullname"
       placeholder="John Doe"
       required
+      minlength="2"
       value="<%= typeof fullname !== 'undefined' ? fullname : '' %>"
     />
   </div>

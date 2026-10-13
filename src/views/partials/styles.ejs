@@ -1,2 +1,223 @@
 <style>
+  :root {
+    /* --main: #fdfdfdbb;
+    --secondary: #ffffffe0; */
+
+    --main: hsla(0, 0%, 92%, 0.659);
+    --secondary: hsla(0, 0%, 100%, 0.91);
+
+    --bg: #0c0a09;
+
+    --muted: rgb(100, 100, 100);
+    --bg-lighter: rgba(109, 109, 109, 0.123);
+
+    --border: 1px solid transparent;
+    --outline: 1px solid grey;
+    --radius: 10px;
+    --padding: 10px;
+  }
+
+  * {
+    line-height: 1.4;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+
+  *:hover {
+    transition: all 0.3s ease;
+  }
+
+  body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+    min-height: 100vh;
+
+    background-color: var(--bg);
+    color: var(--main);
+  }
+  .main {
+    padding: 10px;
+    flex: 1;
+  }
+
+  h1 {
+    color: var(--secondary);
+    text-align: center;
+  }
+
+  nav {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 500px;
+    width: 100%;
+    margin: 10px auto;
+    padding: 0px 10px;
+  }
+
+  nav a {
+    color: unset;
+    text-decoration: unset;
+    margin-left: 10px;
+  }
+
+  nav a:hover {
+    color: var(--secondary);
+  }
+
+  nav form button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    margin-left: 10px;
+    cursor: pointer;
+    color: var(--main);
+  }
+
+  .message {
+    padding: 5px;
+    border-radius: 10px;
+  }
+
+  .message p {
+    margin: 5px;
+  }
+
+  .username {
+    color: var(--secondary);
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+    /* padding: 5px 10px; */
+  }
+
+  .form label {
+    margin: 10px 0px;
+  }
+
+  label {
+    display: block;
+  }
+
+  .form input,
+  textarea {
+    width: 100%;
+    margin-top: 3px;
+    padding: 5px;
+  }
+
+  .form button {
+    max-width: fit-content;
+    padding: 5px 10px;
+    margin: 10px 5px;
+  }
+
+  .form div {
+    margin: 10px 5px;
+  }
+  .nameContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  footer {
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .author,
+  .time,
+  .delete {
+    opacity: 0;
+    color: var(--muted);
+  }
+
+  .message:hover {
+    background-color: var(--bg-lighter);
+  }
+
+  .message:hover .author,
+  .message:hover .time,
+  .message:hover .delete {
+    opacity: 1;
+  }
+
+  .authorContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .authorContainer button {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .authorContainer button:hover {
+    color: red;
+  }
+
+  .form input,
+  .form textarea {
+    font-family: inherit;
+    font-size: inherit;
+    background-color: var(--bg-lighter);
+    border: none;
+    border-radius: 5px;
+    color: var(--main);
+    padding: 8px 10px;
+    border: 1px solid transparent;
+    outline: none;
+  }
+
+  .form input::placeholder {
+    border-radius: 5px;
+    color: var(--muted);
+  }
+
+  .form button {
+    background-color: var(--bg-lighter);
+    color: var(--main);
+    border: 1px solid transparent;
+    outline: none;
+    border-radius: 5px;
+    padding: 7px;
+  }
+
+  .form button:focus,
+  .form input:focus,
+  .form textarea:focus {
+    border: 1px solid var(--muted);
+  }
+
+  .time {
+    display: none;
+  }
+
+  @media (width > 500px) {
+    .message {
+      padding: 10px;
+    }
+    .time {
+      display: block;
+    }
+  }
+
+  @view-transition {
+    navigation: auto;
+  }
 </style>

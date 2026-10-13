@@ -1,11 +1,11 @@
 <%- include('partials/nav') %>
-<h1>Create Message</h1>
+
 <% if (typeof errors !== 'undefined' && errors.length) { %>
-  <div>
+  <div class="errors">
     <% errors.forEach((e) => { %><p><%= e %></p><% }) %>
   </div>
 <% } %>
-<form action="/message" method="POST">
+<form class="main form" action="/message" method="POST">
   <div>
     <label for="title">Title:</label>
     <input
@@ -14,12 +14,13 @@
       name="title"
       placeholder="Enter title"
       required
+      maxlength="100"
     />
   </div>
   <div>
     <label for="text">Message</label>
-    <br />
-    <textarea name="text" id="text" required></textarea>
+
+    <textarea rows="10" name="text" id="text"  required maxlength="1000"></textarea>
   </div>
   <br />
   <button type="submit">Post Message</button>

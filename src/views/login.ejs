@@ -1,11 +1,11 @@
 <%- include('partials/nav') %>
 <h1>Login</h1>
 <% if (typeof errors !== 'undefined' && errors.length) { %>
-  <div>
+  <div class="errors">
     <% errors.forEach((e) => { %><p><%= e %></p><% }) %>
   </div>
 <% } %>
-<form action="/login" method="POST">
+<form class="main form" action="/login" method="POST">
   <div>
     <label for="email">Email Address:</label>
     <input
