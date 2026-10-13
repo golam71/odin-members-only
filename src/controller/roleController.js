@@ -27,6 +27,7 @@ async function becomeAdmin(req, res) {
   const { password } = req.body;
   try {
     if (!req.user) return res.redirect("/login");
+    if (!req.user.is_member) return res.redirect("/member");
     if (req.user.is_admin) return res.redirect("/");
     if (password === process.env.ADMIN_PASSWORD) {
       await makeAdmin(req.user.id);
