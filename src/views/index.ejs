@@ -16,23 +16,24 @@
 
       <% if (typeof messages !== 'undefined' && messages.length) { %>
         <% messages.forEach((m) => { %>
+          <% const canSeeAuthor = user && (user.is_member || user.is_admin); %>
           <div class="message">
             <div class="nameContainer">
               <p class="username"><%= m.title %></p>
-              <% if (user && user.is_member) { %>
+              <% if (canSeeAuthor) { %>
                 <p class="time"><%= new Date(m.created_at).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "medium" }) %></p>
               <% } %>
             </div>
             <p class="text"><%= m.text %></p>
-            <% if (user && user.is_member) { %>
+            <% if (canSeeAuthor) { %>
               <div class="authorContainer">
                 <p class="author">By <%= m.author %></p>
-            <% if (user && user.is_admin) { %>
-                <form action="/deleteMessage" method="POST">
-                <input type="hidden" name="message_id" value="<%= m.id %>" />
-                <button type="submit" class="delete">Delete</button>
-              </form>
-            <% } %>
+                <% if (user.is_admin) { %>
+                  <form action="/deleteMessage" method="POST">
+                    <input type="hidden" name="message_id" value="<%= m.id %>" />
+                    <button type="submit" class="delete">Delete</button>
+                  </form>
+                <% } %>
               </div>
             <% } %>
           </div>

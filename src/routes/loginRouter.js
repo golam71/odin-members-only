@@ -4,7 +4,9 @@ import loginController from "../controller/loginController.js";
 const loginRouter = Router();
 
 loginRouter.get("/login", (req, res) => {
-  res.render("login.ejs");
+  const errors = req.session.messages || [];
+  req.session.messages = [];
+  res.render("login.ejs", { errors });
 });
 
 loginRouter.post("/login", loginController);

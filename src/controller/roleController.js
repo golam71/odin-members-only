@@ -13,7 +13,7 @@ async function becomeMember(req, res) {
     if (!req.user) return res.redirect("/login");
     if (req.user.is_member) return res.redirect("/");
     if (password === process.env.MEMBER_PASSWORD) {
-      await makeMember(req.user.id, password);
+      await makeMember(req.user.id);
       return res.redirect("/");
     }
     res.render("member", { user: req.user, errors: ["Incorrect password"] });
@@ -29,7 +29,7 @@ async function becomeAdmin(req, res) {
     if (!req.user) return res.redirect("/login");
     if (req.user.is_admin) return res.redirect("/");
     if (password === process.env.ADMIN_PASSWORD) {
-      await makeAdmin(req.user.id, password);
+      await makeAdmin(req.user.id);
       return res.redirect("/");
     }
     res.render("admin", { user: req.user, errors: ["Incorrect password"] });
