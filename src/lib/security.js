@@ -44,6 +44,10 @@ export const securityHeaders = helmet({
       "upgrade-insecure-requests": null,
     },
   },
+  // Helmet's default is "no-referrer", which makes browsers send
+  // "Origin: null" on form POSTs. That trips csrfProtection below, so use the
+  // browser default instead.
+  referrerPolicy: { policy: "strict-origin-when-cross-origin" },
 });
 
 // Relaxed limiter: only counts POSTs, so normal browsing is never affected.
@@ -63,7 +67,9 @@ export function csrfProtection(req, res, next) {
   if (safeMethods.includes(req.method)) return next();
 
   const origin = req.get("origin") || req.get("referer");
-  if (!origin) return next(); // non-browser client; SameSite=Lax still applies
+  // Missing or opaque ("null") origin: we can't verify it, so fall back to the
+  // SameSite=Lax cookie, which still blocks cross-site POSTs.
+  if (!origin || origin === "null") return next();
 
   try {
     if (new URL(origin).host === req.get("host")) return next();
