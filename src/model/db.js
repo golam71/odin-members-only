@@ -1,4 +1,4 @@
-import pg, { Pool } from "pg";
+import { Pool } from "pg";
 import "node:process";
 
 try {

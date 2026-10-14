@@ -7,7 +7,10 @@ async function createMessageController(req, res) {
       return res.redirect("/login");
     }
     if (!title || !text) {
-      return res.render("message", { user: req.user, errors: ["Title and message required"] });
+      return res.render("message", {
+        user: req.user,
+        errors: ["Title and message required"],
+      });
     }
     await createMessage(title, text, req.user.id);
     res.redirect("/");

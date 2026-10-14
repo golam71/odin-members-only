@@ -1,4 +1,5 @@
 import { Router } from "express";
+import securityRouter from "./securityRouter.js";
 import authRouter from "./authRouter.js";
 import loginRouter from "./loginRouter.js";
 import singupRouter from "./signupRouter.js";
@@ -8,6 +9,7 @@ import { getAllMessages } from "../model/messageModel.js";
 
 const mainRouter = Router();
 
+mainRouter.use(securityRouter);
 mainRouter.use(authRouter);
 mainRouter.use(loginRouter);
 mainRouter.use(singupRouter);
