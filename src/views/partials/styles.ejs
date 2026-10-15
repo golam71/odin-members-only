@@ -21,6 +21,8 @@
     line-height: 1.4;
     padding: 0px;
     box-sizing: border-box;
+    /* Break long unbroken strings (URLs, no-space text) */
+    overflow-wrap: anywhere;
   }
 
   *:hover {
@@ -34,6 +36,7 @@
     max-width: 600px;
     margin: 0 auto;
     min-height: 100vh;
+    overflow-x: hidden;
 
     background-color: var(--bg);
     color: var(--main);
@@ -129,6 +132,7 @@
     align-items: center;
     justify-content: space-between;
   }
+
 
   footer {
     text-align: center;
